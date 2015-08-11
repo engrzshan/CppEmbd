@@ -4,12 +4,12 @@
  * (c) NXP Semiconductors 2013-2015
  * Generated linker script file for LPC1769
  * Created from generic_cpp.ld (7.8.0 ())
- * By LPCXpresso v7.8.0 [Build 426] [2015-05-28]  on Sat Aug 08 18:37:11 BST 2015
+ * By LPCXpresso v7.8.0 [Build 426] [2015-05-28]  on Tue Aug 11 21:51:01 BST 2015
  */
 
 
-INCLUDE "Feabhas_exercise2_Debug_lib.ld"
-INCLUDE "Feabhas_exercise2_Debug_mem.ld"
+INCLUDE "exercise8_Debug_lib.ld"
+INCLUDE "exercise8_Debug_mem.ld"
 
 ENTRY(ResetISR)
 
