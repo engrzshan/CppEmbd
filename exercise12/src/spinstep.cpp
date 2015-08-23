@@ -1,5 +1,5 @@
 #include <debug_log.h>
-#include <step.h>
+#include <motor.h>
 #include <iostream>
 #include <seven_segment.h>
 #include <spinstep.h>

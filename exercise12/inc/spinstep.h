@@ -2,7 +2,7 @@
 #define SPINSTEP_H_
 
 #include <step.h>
-#include <motor.h>
+class Motor;
 
 class SpinStep: public Step {
 public:

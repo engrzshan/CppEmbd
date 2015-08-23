@@ -2,7 +2,7 @@
 #define washstep_H
 
 #include <step.h>
-#include <motor.h>
+class Motor;
 
 class WashStep: public Step {
 public:
