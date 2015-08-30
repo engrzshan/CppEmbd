@@ -60,14 +60,14 @@ CPP_DEPS += \
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU C++ Compiler'
-	arm-none-eabi-c++ -D__NEWLIB__ -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC17XX__ -I"/home/engrzshan/workspace/lpc/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/engrzshan/workspace/lpc/lpc_chip_175x_6x/inc" -I"/home/engrzshan/workspace/lpc/exercise12/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	arm-none-eabi-c++ -D__NEWLIB__ -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC17XX__ -I"/home/engrzshan/workspace/lpc/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/engrzshan/workspace/lpc/lpc_chip_175x_6x/inc" -I"/home/engrzshan/workspace/lpc/exercise13/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 src/%.o: ../src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU C Compiler'
-	arm-none-eabi-gcc -DDEBUG -DNO_BOARD_LIB -D__CODE_RED -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC17XX__ -D__NEWLIB__ -I"/home/engrzshan/workspace/lpc/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/engrzshan/workspace/lpc/lpc_chip_175x_6x/inc" -I"/home/engrzshan/workspace/lpc/exercise12/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	arm-none-eabi-gcc -DDEBUG -DNO_BOARD_LIB -D__CODE_RED -DCORE_M3 -D__USE_LPCOPEN -DCPP_USE_HEAP -D__LPC17XX__ -D__NEWLIB__ -I"/home/engrzshan/workspace/lpc/lpc_board_nxp_lpcxpresso_1769/inc" -I"/home/engrzshan/workspace/lpc/lpc_chip_175x_6x/inc" -I"/home/engrzshan/workspace/lpc/exercise13/inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

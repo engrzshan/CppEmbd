@@ -10,10 +10,14 @@
 
 class I_DisplayNumeric {
 public:
-	virtual void display(unsigned int num) = 0;
+	virtual void display(unsigned int value) = 0;
 	virtual ~I_DisplayNumeric(){}
 };
 
-
+class I_DisplayText {
+public:
+	virtual void display(const char * str) = 0;
+	virtual ~I_DisplayText(){}
+};
 
 #endif /* IDISPLAY_H_ */

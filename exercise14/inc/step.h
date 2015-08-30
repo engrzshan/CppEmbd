@@ -31,7 +31,7 @@ public:
 private:
 	wm_step_t m_step_num;
 	char * m_p_desc;
-	I_DisplayNumeric * m_idisp_num;
+	I_DisplayNumeric * m_p_idisp;
 	//instead of adding a constructor that takes ref to
 	//SevenSegment as an argument and then modifying other
 	//constructors we can just add a bind function.

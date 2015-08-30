@@ -38,25 +38,25 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: exercise12.axf
+all: exercise13.axf
 
 # Tool invocations
-exercise12.axf: $(OBJS) $(USER_OBJS)
+exercise13.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU C++ Linker'
-	arm-none-eabi-c++ -nostdlib -L"/home/engrzshan/workspace/lpc/lpc_board_nxp_lpcxpresso_1769/Debug" -L"/home/engrzshan/workspace/lpc/lpc_chip_175x_6x/Debug" -Xlinker -Map="exercise12.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "exercise8_Debug.ld" -o "exercise12.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-c++ -nostdlib -L"/home/engrzshan/workspace/lpc/lpc_board_nxp_lpcxpresso_1769/Debug" -L"/home/engrzshan/workspace/lpc/lpc_chip_175x_6x/Debug" -Xlinker -Map="exercise13.map" -Xlinker --gc-sections -mcpu=cortex-m3 -mthumb -T "exercise8_Debug.ld" -o "exercise13.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C++_DEPS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) exercise12.axf
+	-$(RM) $(OBJS)$(C++_DEPS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) exercise13.axf
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "exercise12.axf"; # arm-none-eabi-objcopy -v -O binary "exercise12.axf" "exercise12.bin" ; # checksum -p LPC1769 -d "exercise12.bin";
+	-arm-none-eabi-size "exercise13.axf"; # arm-none-eabi-objcopy -v -O binary "exercise13.axf" "exercise13.bin" ; # checksum -p LPC1769 -d "exercise13.bin";
 	-@echo ' '
 
 .PHONY: all clean dependents

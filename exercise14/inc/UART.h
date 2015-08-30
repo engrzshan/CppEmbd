@@ -13,7 +13,7 @@
 #include <chip.h>
 #include <uart_17xx_40xx.h>
 
-class UART : public I_DisplayNumeric
+class UART : public I_DisplayNumeric, public I_DisplayText
 {
 public:
   enum baudRate { b9600 = 9600, b38400 = 38400, b115k = 115200};

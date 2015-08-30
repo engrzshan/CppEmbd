@@ -26,8 +26,6 @@ Motor::~Motor() {
 
 void Motor::on() {
 	m_gpio.set_port_high(Motor::enable_pin|Motor::change_dir_pin);
-	//m_gpio.set(Motor::change_dir_pin);
-	//m_gpio.set(Motor::enable_pin);
 }
 
 void Motor::off() {
