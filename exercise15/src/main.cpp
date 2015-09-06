@@ -49,14 +49,14 @@ void wait()
 
 int main() {
 	// create a buffer type with type int and size 10
-	typedef CircBuf<uint32_t, 8> 	circ_buffer;
+	typedef CircBuf<double, 8> 	circ_buffer;
 
 	circ_buffer	buf;
 	circ_buffer::buf_st_t st;
 
 	// add 11 items to a buffer of size 10
 	for(int i=0; i<11; ++i) {
-		st = buf.add(i);
+		st = buf.add(i*3.14);
 		if(st == circ_buffer::e_buf_ok) {
 			dout << "OK" << endl;
 		} else {
@@ -66,7 +66,7 @@ int main() {
 
 	// read 11 items from a buffer of size 10
 	for(int i=0; i<11; ++i) {
-		uint32_t data;
+		double data;
 		st = buf.get(data);
 		if(st == circ_buffer::e_buf_ok) {
 			dout << "OK - ";
