@@ -8,69 +8,82 @@
 #ifndef CIRC_BUF_H_
 #define CIRC_BUF_H_
 
-const uint32_t BUF_SIZE = 10;
+using namespace std;
 
-class CircularBuffer {
+template<typename T=int, uint32_t sz=10>
+class CircBuf {
 public:
-	CircularBuffer(uint32_t	size)
-	:	m_writer(0)
-	,	m_reader(0)
-	,	m_items_in_buf(0)
-	{
-
-	}
-
-	~CircularBuffer(){}
-//	void init() {
-//		writer = 0;
-//		reader = 0;
-//		items_in_buf = 0;
-//	}
-
-	enum buf_status_t{
+	enum buf_st_t{
 		e_buf_ok, e_buf_empty, e_buf_full
 	};
 
-	buf_status_t add(uint32_t to_store) {
-		if(m_items_in_buf==BUF_SIZE) {
-			return e_buf_full;
-		}
-
-		buffer[m_writer] = to_store;
-		// reset writer
-		if(++m_writer==BUF_SIZE) {
-			m_writer = 0;
-		}
-		++m_items_in_buf; // one more space filled
-
-		return e_buf_ok;
-	}
-
-	buf_status_t get(uint32_t & value) {
-		if(m_items_in_buf==0) {
-			return e_buf_empty;
-		}
-
-		value = buffer[m_reader];
-		if(++m_reader==BUF_SIZE) {
-			m_reader = 0;
-		}
-		--m_items_in_buf; // one more space available
-
-		return e_buf_ok;
-	}
-
-	bool is_empty(void){
-		return (m_items_in_buf==0);
-	}
+	CircBuf();
+	~CircBuf();
+	buf_st_t add(T to_store);
+	buf_st_t get(T & value);
+	void flush();
+	bool is_empty(void);
 
 private:
 	uint32_t	m_writer;
 	uint32_t	m_reader;
 	uint32_t	m_items_in_buf;
-	uint32_t	buffer[BUF_SIZE];
+	//dynamically allocated buffer
+	T *	const 	m_buffer;
 };
 
+template<typename T, uint32_t sz>
+CircBuf<T, sz>::CircBuf()
+	:	m_buffer(new T[sz]) {
+	flush();
+}
 
+template<typename T, uint32_t sz>
+CircBuf<T, sz>::~CircBuf(){
+	delete[] m_buffer;
+}
+
+template<typename T, uint32_t sz>
+typename CircBuf<T, sz>::buf_st_t CircBuf<T, sz>::add(T to_store) {
+	if(m_items_in_buf==sz) {
+		return e_buf_full;
+	}
+
+	m_buffer[m_writer] = to_store;
+	// reset writer
+	if(++m_writer==sz) {
+		m_writer = 0;
+	}
+	++m_items_in_buf; // one more space filled
+
+	return e_buf_ok;
+}
+
+template<typename T, uint32_t sz>
+typename CircBuf<T, sz>::buf_st_t CircBuf<T, sz>::get(T & value) {
+	if(m_items_in_buf==0) {
+		return e_buf_empty;
+	}
+
+	value = m_buffer[m_reader];
+	if(++m_reader==sz) {
+		m_reader = 0;
+	}
+	--m_items_in_buf; // one more space available
+
+	return e_buf_ok;
+}
+
+template<typename T, uint32_t sz>
+void CircBuf<T, sz>::flush() {
+	m_writer = 0;
+	m_reader = 0;
+	m_items_in_buf = 0;
+}
+
+template<typename T, uint32_t sz>
+bool CircBuf<T, sz>::is_empty(void){
+	return (m_items_in_buf==0);
+}
 
 #endif /* CIRC_BUF_H_ */

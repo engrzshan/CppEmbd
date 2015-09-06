@@ -48,13 +48,16 @@ void wait()
 }
 
 int main() {
-	CircularBuffer 	buf(10);
-	CircularBuffer::buf_status_t st;
+	// create a buffer type with type int and size 10
+	typedef CircBuf<uint32_t, 8> 	circ_buffer;
+
+	circ_buffer	buf;
+	circ_buffer::buf_st_t st;
 
 	// add 11 items to a buffer of size 10
 	for(int i=0; i<11; ++i) {
 		st = buf.add(i);
-		if(st == CircularBuffer::e_buf_ok) {
+		if(st == circ_buffer::e_buf_ok) {
 			dout << "OK" << endl;
 		} else {
 			dout << "Buffer full" << endl;
@@ -65,7 +68,7 @@ int main() {
 	for(int i=0; i<11; ++i) {
 		uint32_t data;
 		st = buf.get(data);
-		if(st == CircularBuffer::e_buf_ok) {
+		if(st == circ_buffer::e_buf_ok) {
 			dout << "OK - ";
 			dout << "Data is: " << data << endl;
 		} else {
